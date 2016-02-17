@@ -26,7 +26,9 @@ def animate_network(ax, weights, activations, dt, pos=nx.spring_layout, **kwargs
 
     for activation in activations:
         ax.cla()
-        nx.draw(g, ax=ax, pos=pos, node_color=activation, **kwargs)
+        # get edge colors
+        edge_colors = [activation[edge[0]] for edge in g.edges()]
+        nx.draw(g, ax=ax, pos=pos, node_color=activation, edge_color=edge_colors, **kwargs)
         display.clear_output(wait=True)
         display.display(plt.gcf())
         time.sleep(dt)
