@@ -10,10 +10,10 @@ def animate_network(ax, weights, activations, dt, **kwargs):
     """
     Animate a dynamically changing network in the output of a Jupyter cell.
 
-    :param weights: weight matrix (or list of weight matrices if changing)
+    :param weights: weight matrix
     :param activations: array of activations
-    :param dt:
-    :param kwargs:
+    :param dt: timestep to wait before updating display
+    :param kwargs: see https://networkx.github.io/documentation/latest/reference/generated/networkx.drawing.nx_pylab.draw_networkx.html for options
     :return:
     """
 
