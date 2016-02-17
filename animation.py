@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 
-def animate_network(ax, weights, activations, dt, **kwargs):
+def animate_network(ax, weights, activations, dt, pos=nx.spring_layout, **kwargs):
     """
     Animate a dynamically changing network in the output of a Jupyter cell.
 
@@ -21,7 +21,8 @@ def animate_network(ax, weights, activations, dt, **kwargs):
     g = nx.from_numpy_matrix(weights.T, create_using=nx.DiGraph())
 
     # get positions
-    pos = nx.spring_layout(g)
+    if not isinstance(pos, dict):
+        pos = pos(g)
 
     for activation in activations:
         ax.cla()
